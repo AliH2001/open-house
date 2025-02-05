@@ -35,15 +35,30 @@ const createListing = async (req, res) => {
 
 const show = async (req, res) => {
     try {
-        console.log('Show: ', req.params.listingId)
         const listing = await Listing.findById(req.params.listingId).populate('owner')
         console.log(listing)
         res.render('listings/show.ejs', {
             title: listing.streetAddress,
             listing
         })
-
     } catch (error) {
+        console.log(error)
+        res.redirect('/')
+    }
+}
+
+const deleteListing = async (req, res) => {
+    try {
+        const listing = await Listing.findById(req.params.listingId) // find the listing
+
+        if (listing.owner.equals(req.params.userId)) { // check if signed in user and listing owner are the same
+            await listing.deleteOne() // delete the listing
+            res.redirect('/listings')
+        } else {
+            res.send("You don't have permission to do that.") // if owner and signed in user are different - send message
+        }
+
+    } catch(error) {
         console.log(error)
         res.redirect('/')
     }
@@ -54,6 +69,6 @@ module.exports = {
     newListing,
     createListing,
     show,
-
+    deleteListing,
 }
 

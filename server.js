@@ -61,12 +61,13 @@ app.post('/auth/sign-in', authCtrl.signIn);
 app.get('/auth/sign-out', authCtrl.signOut); // added this route
 app.get('/vip-lounge', isSignedIn, vipCtrl.welcome); // vip lounge
 
-app.use(isSignedIn) // middleware to check if user is signed in
-
+app.use(isSignedIn) // must be signed in to see below routes
+// LISTINGS HANDLERS
 app.get('/listings',listingsCtrl.index); // list all listings
 app.get('/listings/new',  listingsCtrl.newListing); // new listing
 app.post('/listings',listingsCtrl.createListing)
 app.get('/listings/:listingId', listingsCtrl.show)
+app.delete('/listings/:userId/:listingId', listingsCtrl.deleteListing)
 
 app.use((req, res) => {
   res.status(404).send('Page not found');
