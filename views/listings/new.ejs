@@ -1,0 +1,18 @@
+<%- include('../partials/head') %>
+    <div class="container">
+        <h1>Add a new listings </h1>
+        <form action="/listings" method="post">
+            <label for=""> Street Address:</label>
+            <input type="text" name="street" placeholder="Enter your street address">
+            <label for=""> City:</label>
+            <input type="text" name="city" placeholder="Enter your city">
+            <label for=""> Price:</label>
+            <input type="text" name="price" placeholder="Enter your price">
+            <label for=""> Size:</label>
+            <input type="text" name="size" placeholder="Enter your size">
+            <button type="submit" class="btn btn-primary">Add</button>
+        </form>
+
+    </div>
+
+    <%- include('../partials/footer') %>
