@@ -63,9 +63,10 @@ app.get('/vip-lounge', isSignedIn, vipCtrl.welcome); // vip lounge
 
 app.use(isSignedIn) // middleware to check if user is signed in
 
-app.get('/listings/index',listingsCtrl.index); // list all listings
+app.get('/listings',listingsCtrl.index); // list all listings
 app.get('/listings/new',  listingsCtrl.newListing); // new listing
 app.post('/listings',listingsCtrl.createListing)
+app.get('/listings/:listingId', listingsCtrl.show)
 
 app.use((req, res) => {
   res.status(404).send('Page not found');

@@ -1,8 +1,17 @@
+
 <%- include('../partials/head') %>
-<div class="container">
+    <div class="container">
+        <!-- <h1>Here's all the listings</h1> -->
+            <% listings.forEach((listing) => { %>
 
-    <h1>Here's all your listings </h1>
+                <div class="card mt-2" style="width: 18rem;">
+                    <img src="https://images.pexels.com/photos/106399/pexels-photo-106399.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" class="card-img-top" alt="...">
+                    <div class="card-body">
+                      <h5 class="card-title">$<%= listing.price %></h5>
+                      <p class="card-text"><%= listing.streetAddress %></p>
+                      <a href="/listings/<%= listing._id %>" class="btn btn-primary">View Details</a>
+                    </div>
+                  </div>
 
-</div>
-
-<%- include('../partials/footer') %>
+            <% }) %>  
+    </div>
