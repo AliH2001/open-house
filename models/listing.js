@@ -28,13 +28,14 @@ const listingSchema = new mongoose.Schema({
         ref: 'User',
     },
 
-favoritedByUsers:{
-    type: [
-        {type: mongoose.Schema.Types.ObjectId,
+favoritedByUsers:[
+
+        {
+            type: mongoose.Schema.Types.ObjectId,
             ref: 'User'
         }
-        ]
-}
+    ]  
+
 
 }, {timestamps: true})
 
