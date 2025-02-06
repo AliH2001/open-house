@@ -65,9 +65,12 @@ app.use(isSignedIn) // must be signed in to see below routes
 // LISTINGS HANDLERS
 app.get('/listings',listingsCtrl.index); // list all listings
 app.get('/listings/new',  listingsCtrl.newListing); // new listing
-app.post('/listings',listingsCtrl.createListing)
+// app.post('/listings',listingsCtrl.createListing)
+app.post('/listings/:userId', listingsCtrl.createListing)
 app.get('/listings/:listingId', listingsCtrl.show)
 app.delete('/listings/:userId/:listingId', listingsCtrl.deleteListing)
+app.get('/listings/:userId/:listingId/edit', listingsCtrl.edit)
+app.put('/listings/:userId/:listingId', listingsCtrl.update)
 
 app.use((req, res) => {
   res.status(404).send('Page not found');
