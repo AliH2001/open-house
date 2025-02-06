@@ -27,6 +27,15 @@ const listingSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User',
     },
+
+favoritedByUsers:{
+    type: [
+        {type: mongoose.Schema.Types.ObjectId,
+            ref: 'User'
+        }
+        ]
+}
+
 }, {timestamps: true})
 
 const Listing = mongoose.model('Listing', listingSchema)
